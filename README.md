@@ -1,6 +1,6 @@
 ## Cute LS 🦄
 
-this is a minimal `ls` that showcases Spring Shell with GraalVM Native Image.
+this is a minimal `ls` implementation that showcases Spring Shell with GraalVM Native Image.
 
 ## Build and run
 
