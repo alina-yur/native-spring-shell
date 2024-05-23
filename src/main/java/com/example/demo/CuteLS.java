@@ -10,7 +10,7 @@ import java.io.File;
 @ShellComponent
 public class CuteLS {
 
-    @ShellMethod("Lists files in the specified directory, or in the current directory if no path is provided.")
+    @ShellMethod("Lists files in the specified directory, or in the current directory as default.")
     public String ls(@ShellOption(defaultValue = ShellOption.NULL) String path) {
         File directory = path != null ? new File(path) : new File(".");
         
@@ -23,15 +23,16 @@ public class CuteLS {
         if (files != null) {
             for (File file : files) {
                 if (file.isDirectory()) {
-                    sb.append(AnsiOutput.toString(AnsiColor.BLUE))
-                      .append("\uD83D\uDCC1 ")
-                      .append(file.getName())
-                      .append("/")
-                      .append(AnsiOutput.toString(AnsiColor.DEFAULT))
-                      .append("\n");
+                    sb.append("\033[36m")
+                    .append("\uD83E\uDD16")
+                    .append(file.getName())
+                    .append("/")
+                    .append(AnsiOutput.toString(AnsiColor.DEFAULT))
+                    .append("\n");
+
                 } else {
-                    sb.append(AnsiOutput.toString(AnsiColor.BRIGHT_MAGENTA))
-                      .append("\uD83E\uDD84 ")
+                      sb.append("\033[34m")
+                      .append("\uD83E\uDD84")
                       .append(file.getName())
                       .append(AnsiOutput.toString(AnsiColor.DEFAULT))
                       .append("\n");
