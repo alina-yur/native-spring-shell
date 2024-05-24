@@ -24,7 +24,7 @@ public class CuteLS {
             for (File file : files) {
                 if (file.isDirectory()) {
                     sb.append("\033[36m")
-                    .append("\uD83E\uDD16")
+                    .append("🤖")
                     .append(file.getName())
                     .append("/")
                     .append(AnsiOutput.toString(AnsiColor.DEFAULT))
@@ -32,7 +32,7 @@ public class CuteLS {
 
                 } else {
                       sb.append("\033[34m")
-                      .append("\uD83E\uDD84")
+                      .append("🦄")
                       .append(file.getName())
                       .append(AnsiOutput.toString(AnsiColor.DEFAULT))
                       .append("\n");
