@@ -25,14 +25,14 @@ public class CuteLS {
                 if (file.isDirectory()) {
 
                     sb.append("\033[1;36m")
-                    .append("\uD83E\uDD16")
+                    .append("🤖")
                     .append(file.getName())
                     .append("/")
                     .append(AnsiOutput.toString(AnsiColor.DEFAULT))
                     .append("\n");
                 } else {
                       sb.append("\033[1;34m")
-                      .append("\uD83E\uDD84")
+                      .append("🦄")
                       .append(file.getName())
                       .append(AnsiOutput.toString(AnsiColor.DEFAULT))
                       .append("\n");
