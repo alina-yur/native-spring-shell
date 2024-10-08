@@ -5,7 +5,7 @@ this is a minimal `ls` implementation that showcases Spring Shell with GraalVM N
 ## Build and run
 
 ```shell
-mvn -Pnative native:compile -DskipTests
+mvn -Pnative native:compile
 ./target/native-spring-shell
 >ls
 ```
