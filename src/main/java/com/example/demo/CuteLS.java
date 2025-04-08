@@ -13,31 +13,34 @@ import java.util.stream.Collectors;
 
 @ShellComponent
 public class CuteLS {
-    private static final String DIRECTORY_COLOR = "\033[1;36m";
-    private static final String FILE_COLOR = "\033[1;34m";
+    private static final String DIRECTORY_COLOR = AnsiOutput.toString(AnsiColor.CYAN, AnsiColor.BRIGHT);
+    private static final String FILE_COLOR = AnsiOutput.toString(AnsiColor.BLUE, AnsiColor.BRIGHT);
     private static final String RESET_COLOR = AnsiOutput.toString(AnsiColor.DEFAULT);
 
     @ShellMethod("Lists files in the specified directory, or in the current directory as default.")
     public String ls(@ShellOption(defaultValue = ShellOption.NULL) String path) {
         File directory = Optional.ofNullable(path)
-            .map(File::new)
-            .orElse(new File("."));
-        
+                .map(File::new)
+                .orElse(new File("."));
+
         if (!directory.exists() || !directory.isDirectory()) {
             return "Invalid directory.";
         }
-        
-        return Optional.ofNullable(directory.listFiles())
-            .map(files -> Arrays.stream(files)
+
+        File[] files = directory.listFiles();
+        if (files == null || files.length == 0) {
+            return "Directory is empty.";
+        }
+
+        return Arrays.stream(files)
                 .map(this::formatFile)
-                .collect(Collectors.joining("\n")))
-            .orElse("");
+                .collect(Collectors.joining("\n"));
     }
 
     private String formatFile(File file) {
-        String emoji = file.isDirectory() ? "🤖" : "🦄";
+        String emoji = file.isDirectory() ? "🤖" : "🦄";  // Keeping original emojis
         String color = file.isDirectory() ? DIRECTORY_COLOR : FILE_COLOR;
         String name = file.getName() + (file.isDirectory() ? "/" : "");
-        return color + emoji + name + RESET_COLOR;
+        return color + emoji + " " + name + RESET_COLOR;  // Added space after emoji for better readability
     }
 }
