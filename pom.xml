@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.12</version>
+		<version>3.4.4</version>
 		<relativePath/>
 		<!-- lookup parent from repository -->
 	</parent>
@@ -15,8 +15,8 @@
 	<name>native-spring-shell</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>22</java.version>
-		<spring-shell.version>3.2.4</spring-shell.version>
+		<java.version>24</java.version>
+		<spring-shell.version>3.4.0</spring-shell.version>
 	</properties>
 	<dependencies>
 		<dependency>
